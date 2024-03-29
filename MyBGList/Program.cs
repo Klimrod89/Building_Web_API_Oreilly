@@ -25,16 +25,11 @@ else
 {
     app.UseExceptionHandler("/error");
 }
-
+app.UseWelcomePage("/"); 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-// Error
-app.MapGet("/error", () => Results.Problem());
-app.MapGet("/error/test", () => { throw new Exception("test"); });
-
-app.MapGet("person", () => new Person("Andrew", "Lock"));
 
 List<Person> people = new()
     {
@@ -47,6 +42,16 @@ List<Person> people = new()
         new("Yasmine", "Bachirou"),
         new("Allake", "Freeman")
     };
+
+
+// Error
+app.MapGet("/error", () => Results.Problem());
+app.MapGet("/error/test", () => { throw new Exception("test"); });
+
+app.MapGet("person", () => new Person("Andrew", "Lock"));
+app.MapGet("/people", () => people.ToList());
+
+
 
 app.MapGet("/person/{name}", (string name) => people.Where(p => p.FirstName.StartsWith(name)));
 
