@@ -26,7 +26,7 @@
       "launchUrl": "boardgames",
       "applicationUrl": "https://localhost:55222;http://localhost:55221",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Staging"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "IIS Express": {

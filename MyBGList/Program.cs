@@ -34,7 +34,7 @@ app.UseAuthorization();
 app.MapGet("/error", () => Results.Problem());
 app.MapGet("/error/test", () => { throw new Exception("test"); });
 
-app.MapGet("/person", () => new Person("Andrew", "Lock"));
+app.MapGet("person", () => new Person("Andrew", "Lock"));
 
 List<Person> people = new()
     {
@@ -43,6 +43,9 @@ List<Person> people = new()
         new("Leondardo", "DiCaprio"),
         new("Al", "Pacino"),
         new("Morgan", "Freeman"),
+        new("Yassir", "Chitou"),
+        new("Yasmine", "Bachirou"),
+        new("Allake", "Freeman")
     };
 
 app.MapGet("/person/{name}", (string name) => people.Where(p => p.FirstName.StartsWith(name)));
